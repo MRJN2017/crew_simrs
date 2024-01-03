@@ -45,4 +45,9 @@ class Patroli_Model extends CI_Model
         $result = $this->db->insert('patroli', $data);
         return $result;
     }
+
+    public function get_divisi(){
+        $result = $this->db->get('divisi');
+        return $result->result();
+    }
 }

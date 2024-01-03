@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label for="loket">Unit Loket</label><br>
-            <input type="checkbox" name="loket[]" value="Display"> Display <br />
+            <input type="checkbox" name="loket[]" value="Display"> Display <br /> 
             <input type="checkbox" name="loket[]" value="Speaker"> Speaker <br />
             <input type="checkbox" name="loket[]" value="Minipc"> Mini PC <br />
             <input type="checkbox" name="loket[]" value="Kesehatan CPU"> Kesehatan CPU <br />
