@@ -46,7 +46,7 @@
                     <a href="<?= base_url('patroli') ?>"><span class="fa fa-server mr-3"></span> Patroli Harian</a>
                 </li>
                 <li>
-                    <a href="<?= base_url('patroli') ?>"><span class="fa fa-bullhorn mr-3"></span> Form Penanganan</a>
+                    <a href="<?= base_url('patroli/form_penanganan') ?>"><span class="fa fa-bullhorn mr-3"></span> Form Penanganan</a>
                 </li>
                 <li>
                     <a href="<?= base_url('patroli/laporan') ?>"><span class="fa fa-bar-chart mr-3"></span> Laporan Patroli</a>
