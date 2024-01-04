@@ -45,6 +45,10 @@
                 <li>
                     <a href="<?= base_url('patroli') ?>"><span class="fa fa-server mr-3"></span> Patroli Harian</a>
                 </li>
+                <!-- untuk fitur itu nnti hanya kepada unit yang dapat lihat. fungsi supaya kepada unit dapat melihat anggota lagi kosong atau bagaimana dan lain"  -->
+                <li>
+                    <a href="<?= base_url('jobdesk') ?>"><span class="fa fa-server mr-3"></span> My Crew</a>
+                </li>
                 <li>
                     <a href="<?= base_url('patroli/form_penanganan') ?>"><span class="fa fa-bullhorn mr-3"></span> Form Penanganan</a>
                 </li>
