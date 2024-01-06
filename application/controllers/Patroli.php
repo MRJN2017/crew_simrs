@@ -19,12 +19,6 @@ class Patroli extends CI_Controller
         return $this->template->load('template', 'patroli');
     }
 
-    public function form_penanganan(){
-        $data['divisi'] = $this->patroli->get_divisi();
-        return $this->template->load('template', 'penanganan', $data);
-
-    }
-
     public function laporan()
     {
         $data['patroli'] = $this->patroli->get_all();

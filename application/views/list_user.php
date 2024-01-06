@@ -2,11 +2,11 @@
     <h2 class="mb-4">List Karyawan</h2>
 
 </div>
-<div class="d-inline ml-auto float-left">
+<div class="d-inline ml-auto float-left" style="margin-top: 10px;">
     <span class="text-white"> => Silakan menambahkan Kerjaan baru anda kemudian lihat pada list karyawan dibawah ini sesuai nama anda</span>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
+        Tambah Anggota
     </button>
     <!-- <div class="d-inline ml-auto float-left">
         <a href="#" class="btn btn-success btn-sm btn-add-divisi" data-toggle="modal" data-target="#modal-add-divisi"><i class="fa fa-plus"></i> Tambah Kerjaan</a>

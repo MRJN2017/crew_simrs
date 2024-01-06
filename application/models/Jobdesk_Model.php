@@ -21,4 +21,9 @@ class Jobdesk_Model extends CI_Model
         $result = $this->db->delete('tugas');
         return $result;
     }
+    
+    public function get_divisi(){
+        $result = $this->db->get('divisi');
+        return $result->result();
+    }
 }

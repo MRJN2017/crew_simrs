@@ -21,6 +21,27 @@ class Jobdesk extends CI_Controller
         return $this->template->load('template', 'list_job');
     }
 
+    public function form_penanganan(){
+        $data['divisi'] = $this->jobdesk->get_divisi();
+        return $this->template->load('template', 'penanganan', $data);
+
+    }
+
+    public function save_report() {
+        $post = $this->input->post();
+        $data = [
+            'id_tugas' => '',
+            'id_user' => $post['nama'],
+            'nama' => $post['nama'],
+            'nama' => $post['nama'],
+            'username' => $post['username'],
+            'password' => password_hash($post['password'], PASSWORD_DEFAULT),
+            'level' => "crew",
+        ];
+        $this->jobdesk->save_report($data);
+        redirect('reportcontroller/index');
+    }
+
     public function store()
     {
         $index_tugas = $this->input->post('nama_divisi');
