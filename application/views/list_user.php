@@ -3,7 +3,7 @@
 
 </div>
 <div class="d-inline ml-auto float-left" style="margin-top: 10px;">
-    <span class="text-white"> => Silakan menambahkan Kerjaan baru anda kemudian lihat pada list karyawan dibawah ini sesuai nama anda</span>
+    <span class="text-white"> => Pilih nama anda pada list dibawah ini dan Silakan menambahkan Kerjaan baru anda</span>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Tambah Anggota
