@@ -66,9 +66,8 @@ class Auth extends CI_Controller
 
     private function set_session($user_data)
     {
-        // $this->load->model('Absensi_model', 'absensi');
         $this->session->set_userdata([
-            'id' => $user_data->id_user,
+            'id_user' => $user_data->id_user,
             'nama' => $user_data->nama,
             'username' => $user_data->username,
             'level' => $user_data->level,
@@ -77,7 +76,7 @@ class Auth extends CI_Controller
 
         $this->session->set_flashdata('response', [
             'status' => 'success',
-            'message' => 'Selamat Datang ' . $user_data->nama
+            'message' => 'Selamat Datang ' . $user_data->id_user
         ]);
     }
 
@@ -85,6 +84,7 @@ class Auth extends CI_Controller
     {
         $this->session->set_flashdata('error', $msg);
     }
+    
     public function response_json($response)
     {
         header('Content-Type: application/json');

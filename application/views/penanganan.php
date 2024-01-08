@@ -4,7 +4,7 @@
     </div>
 
     <div class="jumbotron bg-dark text-white">
-        <form action="<?= base_url('patroli/report') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('jobdesk/save_report') ?>" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="tgl">Tanggal</label>
@@ -27,8 +27,8 @@
             </div>
 
             <div class="form-group">
-                <label for="ket_loket">Masukan kendala yang dilaporkan</label>
-                <textarea id="ket_loket" name="ket_loket" class="form-control" style="height: 100px;" placeholder="Keterangan apabila terjadi masalah"></textarea>
+                <label for="ket">Masukan kendala yang dilaporkan</label>
+                <textarea id="ket" name="ket" class="form-control" style="height: 100px;" placeholder="Keterangan apabila terjadi masalah"></textarea>
             </div>
 
             <div class="card-footer">

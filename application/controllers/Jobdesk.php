@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Jobdesk extends CI_Controller
 {
     public function __construct()
+
     {
         parent::__construct();
         is_login();
@@ -29,17 +30,30 @@ class Jobdesk extends CI_Controller
 
     public function save_report() {
         $post = $this->input->post();
+
+        $id = (string) $_SESSION['id_user'];
+
         $data = [
             'id_tugas' => '',
-            'id_user' => $post['nama'],
-            'nama' => $post['nama'],
-            'nama' => $post['nama'],
-            'username' => $post['username'],
-            'password' => password_hash($post['password'], PASSWORD_DEFAULT),
-            'level' => "crew",
+            'id_user' => $id,
+            'tanggal' => $post['tgl'],
+            'id_divisi' => $post['name_divisi'],
+            'nama_pelapor' => $post['nama_pelapor'],
+            'tugas' => $post['ket'],
         ];
-        $this->jobdesk->save_report($data);
-        redirect('reportcontroller/index');
+        $result = $this->jobdesk->save_report($data);
+         
+        if($result){
+            $response = [
+                'status' => 'success',
+                'message' => 'Data berhasil Ditambahkan!'
+            ];
+
+        }
+
+        $this->session->set_flashdata('response', $response);
+        redirect('jobdesk/form_penanganan');
+
     }
 
     public function store()
@@ -62,7 +76,12 @@ class Jobdesk extends CI_Controller
         return $this->response_json($response);
     }
 
-    private function response_json($response)
+    private function error($msg)
+    {
+        $this->session->set_flashdata('error', $msg);
+    }
+    
+    public function response_json($response)
     {
         header('Content-Type: application/json');
         echo json_encode($response);
