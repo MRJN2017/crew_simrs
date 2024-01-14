@@ -13,13 +13,22 @@ class Jobdesk extends CI_Controller
 
     public function index()
     {
-        return $this->template->load('template', 'list_user');
+        $data['list_user'] = $this->jobdesk->get_all_user();
+
+        return $this->template->load('template', 'list_user', $data);
     }
 
     public function list_job()
     {
-
+        $data['tugas'] = $this->jobdesk->get_all();
         return $this->template->load('template', 'list_job');
+    }
+
+    public function list_jobById(){
+        $id_user = $this->uri->segment(3);
+        $data['listUserById'] = $this->jobdesk->gerByID($id_user);
+        return $this->template->load('template', 'list_job', $data);
+
     }
 
     public function form_penanganan(){

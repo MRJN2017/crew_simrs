@@ -3,9 +3,25 @@ defined('BASEPATH') or die('No direct script access allowed');
 
 class Jobdesk_Model extends CI_Model
 {
+    public function get_all_user()
+    {
+        $result = $this->db->get('users');
+        return $result->result();
+        // ubah nntin filter sesuai kebutuhan
+    }
+
     public function get_all()
     {
         $result = $this->db->get('tugas');
+        return $result->result();
+    }
+    
+    public function gerByID($id_user){
+        $this->db->join('divisi', 'tugas.id_divisi = divisi.id_divisi', 'LEFT');
+
+        $this->db->where('id_user', $id_user);
+        $result = $this->db->get('tugas');
+        
         return $result->result();
     }
 
@@ -15,7 +31,8 @@ class Jobdesk_Model extends CI_Model
         return $result;
     }
 
-    public function save_report($data) {
+    public function save_report($data)
+    {
         // Insert data into the database
         $this->db->insert('tugas', $data); // Replace 'your_table' with the actual table name
     }
@@ -28,7 +45,8 @@ class Jobdesk_Model extends CI_Model
         return $result;
     }
 
-    public function get_divisi(){
+    public function get_divisi()
+    {
         $result = $this->db->get('divisi');
         return $result->result();
     }

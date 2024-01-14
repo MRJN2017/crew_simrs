@@ -2,23 +2,24 @@
     <h2 class="mb-4">List Karyawan</h2>
 
 </div>
-<div class="d-inline ml-auto float-left" style="margin-top: 10px;">
-    <span class="text-white"> => Pilih nama anda pada list dibawah ini dan Silakan menambahkan Kerjaan baru anda</span>
+<div class="d-inline ml-auto float-left" style="margin-top: 10px; margin-left: 10px;">
+    <!-- <span class="text-white"> => Pilih nama anda pada list dibawah ini dan Silakan menambahkan Kerjaan baru anda</span> -->
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Tambah Anggota
-    </button>
+
     <!-- <div class="d-inline ml-auto float-left">
         <a href="#" class="btn btn-success btn-sm btn-add-divisi" data-toggle="modal" data-target="#modal-add-divisi"><i class="fa fa-plus"></i> Tambah Kerjaan</a>
     </div> -->
     <br>
 </div>
-<?php if (is_level('captain')) : ?>
-    <!-- <div class="d-inline ml-auto float-left" <?= @$_active ?>>
+<!-- <?php if (is_level('captain')) : ?>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Tambah Anggota
+    </button>
+    <div class="d-inline ml-auto float-left" <?= @$_active ?>>
         <br>
         <a href="#" class="btn btn-success btn-sm btn-add-divisi" data-toggle="modal" data-target="#modal-add-divisi"><i class="fa fa-plus"></i> Tambah Kerjaan untuk crew</a>
-    </div> -->
-<?php endif; ?>
+    </div>
+<?php endif; ?> -->
 
 <div class="jumbotron bg-dark text-white">
     <br>
@@ -32,27 +33,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Paskalis</td>
-                <td>
-                    <a href="<?= base_url('jobdesk/list_job') ?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail Kerjaan</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Irene</td>
-                <td>
-                    <a href="<?= base_url('jobdesk/list_job') ?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail Kerjaan</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Marthinus</td>
-                <td>
-                    <a href="<?= base_url('jobdesk/list_job') ?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail Kerjaan</a>
-                </td>
-            </tr>
+            <?php foreach ($list_user as $i => $ls) : ?>
+                <tr>
+                    <td><?= ($i + 1) ?></td>
+                    <td><?= $ls->nama ?></td>
+                    <td>
+                        <a href="<?= base_url('jobdesk/list_jobById/' . $ls->id_user) ?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail Kerjaan</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
