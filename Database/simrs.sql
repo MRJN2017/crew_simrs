@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jan 2024 pada 16.04
+-- Waktu pembuatan: 17 Jan 2024 pada 00.48
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -129,9 +129,27 @@ INSERT INTO `patroli` (`id_patroli`, `tanggal`, `unit`, `hasil_cek`, `ket`) VALU
 
 CREATE TABLE `tugas` (
   `id_tugas` int(10) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `tugas` text NOT NULL
+  `id_user` int(5) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `id_divisi` int(10) NOT NULL,
+  `nama_pelapor` varchar(20) NOT NULL,
+  `tugas` varchar(200) NOT NULL,
+  `status` enum('on progress','complite','','') NOT NULL DEFAULT 'on progress'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tugas`
+--
+
+INSERT INTO `tugas` (`id_tugas`, `id_user`, `tanggal`, `id_divisi`, `nama_pelapor`, `tugas`, `status`) VALUES
+(1, 3, '2024-01-08 17:14:00', 14, 'prisil', 'Kangen ingin ketemu nino', 'on progress'),
+(2, 3, '2024-01-08 17:17:00', 15, 'James', 'kabel melintang', 'on progress'),
+(3, 3, '2024-01-08 17:20:00', 14, 'Nino', 'jangan nakal', 'on progress'),
+(4, 3, '2024-01-08 17:23:00', 18, 'ida', 'kangen', 'on progress'),
+(5, 3, '2024-01-08 17:27:00', 22, 'serli', 'inventori', 'on progress'),
+(6, 3, '2024-01-08 17:30:00', 20, 'elsa', 'jaringan jelek', 'on progress'),
+(7, 3, '2024-01-08 17:31:00', 23, 'uni', 'kangen berat', 'on progress'),
+(8, 3, '2024-01-15 10:05:00', 28, 'Meriana', 'kekurangan tinta print , tolong segera diisi soalnya cito', 'on progress');
 
 -- --------------------------------------------------------
 
@@ -140,7 +158,7 @@ CREATE TABLE `tugas` (
 --
 
 CREATE TABLE `users` (
-  `id` int(5) NOT NULL,
+  `id_user` int(5) NOT NULL,
   `nama` varchar(120) NOT NULL,
   `username` varchar(120) NOT NULL,
   `password` varchar(120) NOT NULL,
@@ -151,7 +169,7 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
+INSERT INTO `users` (`id_user`, `nama`, `username`, `password`, `level`) VALUES
 (2, 'Paskalis', 'paskal', '$2a$12$JZgH93i/3YaZmouhIWvZouv6oSKWwMCJskDYoWi014uffnTBrzxnq', 'captain'),
 (3, 'irene', 'Iren', '$2a$12$a8iIodPf8mpMs7NUd53Qr.GyE5poTcQnOIkFLlF8QQkKR9jMZpv8a', 'crew'),
 (5, 'Mislina', 'mis', '$2y$10$uqjP2OM1heAcKK1B7.nLtuiHjPDrYn81ocZkauAz6YV62uKR3LGxS', 'crew');
@@ -176,13 +194,15 @@ ALTER TABLE `patroli`
 -- Indeks untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
-  ADD PRIMARY KEY (`id_tugas`);
+  ADD PRIMARY KEY (`id_tugas`),
+  ADD KEY `id_divisi` (`id_divisi`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -204,13 +224,24 @@ ALTER TABLE `patroli`
 -- AUTO_INCREMENT untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `id_tugas` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tugas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `tugas`
+--
+ALTER TABLE `tugas`
+  ADD CONSTRAINT `tugas_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`),
+  ADD CONSTRAINT `tugas_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
