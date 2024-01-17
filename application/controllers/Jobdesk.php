@@ -26,7 +26,7 @@ class Jobdesk extends CI_Controller
 
     public function list_jobById(){
         $id_user = $this->uri->segment(3);
-        $data['listUserById'] = $this->jobdesk->gerByID($id_user);
+        $data['listUserById'] = $this->jobdesk->getByID($id_user);
         return $this->template->load('template', 'list_job', $data);
 
     }
@@ -63,6 +63,40 @@ class Jobdesk extends CI_Controller
         $this->session->set_flashdata('response', $response);
         redirect('jobdesk/form_penanganan');
 
+    }
+
+    public function excel_hasil_pelaporan()
+    {
+        $id_user = $this->uri->segment(3);
+        $hasil = $this->jobdesk->getByID($id_user);
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Tanggal');
+        $sheet->setCellValue('C1', 'Unit');
+        $sheet->setCellValue('D1', 'Nama Pelapor');
+        $sheet->setCellValue('E1', 'Keterangan');
+
+        
+
+        $no = 1;
+        $x = 2;
+        foreach ($hasil as $row) {
+            $sheet->setCellValue('A' . $x, $no++);
+            $sheet->setCellValue('B' . $x, $row->tanggal);
+            $sheet->setCellValue('C' . $x, $row->nama_divisi);
+            $sheet->setCellValue('D' . $x, $row->nama_pelapor);
+            $sheet->setCellValue('E' . $x, $row->ket);
+            $x++;
+        }
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'laporan_Hasil_Pelaporan';
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="' . $filename . '.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 
     public function store()

@@ -15,8 +15,13 @@ class Jobdesk_Model extends CI_Model
         $result = $this->db->get('tugas');
         return $result->result();
     }
+
+    public function get_name($id_user){
+        $this->db->where('id_user', $id_user);
+        $result = $this->db->get('users');
+    }
     
-    public function gerByID($id_user){
+    public function getByID($id_user){
         $this->db->join('divisi', 'tugas.id_divisi = divisi.id_divisi', 'LEFT');
 
         $this->db->where('id_user', $id_user);

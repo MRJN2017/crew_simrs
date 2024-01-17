@@ -25,11 +25,12 @@ class Auth extends CI_Controller
     {
         $post = $this->input->post();
         $data = [
-            'id' => '',
+            'id_user' => '',
             'nama' => $post['nama'],
             'username' => $post['username'],
             'password' => password_hash($post['password'], PASSWORD_DEFAULT),
             'level' => "crew",
+            'aktif' => "0",
         ];
         $result = $this->user->insert_data($data);
         if($result){
