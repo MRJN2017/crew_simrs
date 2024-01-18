@@ -3,7 +3,7 @@
 
 </div>
 <div class="jumbotron bg-dark text-white">
-    <a class="btn btn-primary" href="<?= base_url('patroli/excel_hasil_patroli') ?>" target="_blank" rel="noopener">
+    <a class="btn btn-primary" href="<?= base_url('jobdesk/excel_hasil_pelaporan/'.$id_userL) ?>" target="_blank" rel="noopener">
         <i class="fa fa-file-excel-o"></i> Export data pelaporan
     </a><br><br>
     <div class="table-responsive">

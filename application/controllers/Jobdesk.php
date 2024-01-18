@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Jobdesk extends CI_Controller
 {
     public function __construct()
@@ -26,6 +31,7 @@ class Jobdesk extends CI_Controller
 
     public function list_jobById(){
         $id_user = $this->uri->segment(3);
+        $data['id_userL'] = $id_user;
         $data['listUserById'] = $this->jobdesk->getByID($id_user);
         return $this->template->load('template', 'list_job', $data);
 
@@ -86,14 +92,14 @@ class Jobdesk extends CI_Controller
             $sheet->setCellValue('B' . $x, $row->tanggal);
             $sheet->setCellValue('C' . $x, $row->nama_divisi);
             $sheet->setCellValue('D' . $x, $row->nama_pelapor);
-            $sheet->setCellValue('E' . $x, $row->ket);
+            $sheet->setCellValue('E' . $x, $row->tugas);
             $x++;
         }
         $writer = new Xlsx($spreadsheet);
-        $filename = 'laporan_Hasil_Pelaporan';
+        $filename = 'laporan_Hasil_Pelaporan_';
 
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="' . $filename . '.xlsx"');
+        header('Content-Disposition: attachment;filename="' . $filename .''.$filename .'.xlsx"');
         header('Cache-Control: max-age=0');
 
         $writer->save('php://output');
