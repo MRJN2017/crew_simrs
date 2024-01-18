@@ -168,7 +168,7 @@ class Patroli extends CI_Controller
 
             $sheet->setCellValue('I' . $x, $row->unit_igd);
             $sheet->setCellValue('J' . $x, $row->hasil_cek_igd, ' Aman');
-            $sheet->setCellValue('K' . $x, $row->ket_loket);
+            $sheet->setCellValue('K' . $x, $row->ket_igd);
 
             $sheet->setCellValue('L' . $x, $row->unit_farmasi);
             $sheet->setCellValue('M' . $x, $row->hasil_cek_farmasi, ' Aman');

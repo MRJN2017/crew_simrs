@@ -63,13 +63,13 @@
             <input type="checkbox" name="farmasi[]" value="Network"> Network <br />
             <input type="checkbox" name="farmasi[]" value="Kabel LAN"> Kabel LAN <br />
             <div>
-                <select class="form-control" name="ket_farmasi" id="ket_farmasi">
+                <!-- <select class="form-control" name="ket_farmasi" id="ket_farmasi">
                     <option value="">--- Choose a Issue ---</option>
                     <option value="Rusak">Rusak</option>
                     <option value="Perlu Tindankan">Perlu Tindankan</option>
                     <option value="Ganti Baru">Ganti Baru</option>
-                </select>
-                <!-- <textarea id="ket_farmasi" name="ket_farmasi" style="height: 100px; width: 800px;" placeholder="Keterangan apabila terjadi masalah pada unit Farmasi"></textarea> -->
+                </select> -->
+                <textarea id="ket_farmasi" name="ket_farmasi" style="height: 100px; width: 800px;" placeholder="Keterangan apabila terjadi masalah pada unit Farmasi"></textarea>
             </div>
         </div>
 

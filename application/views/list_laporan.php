@@ -41,23 +41,23 @@
                     <td><?= ($i + 1) ?></td>
                     <td><?= date('l, d-m-Y', strtotime($dc->tanggal)) ?></td>
 
-                    <td><?= $dc->unit_poli ?></td>
+                    <td><strong><?= $dc->unit_poli ?></strong></td>
                     <td><?= $dc->hasil_cek_poli ?> Aman</td>
                     <td><?= $dc->ket_poli ?></td>
-
-                    <td><?= $dc->unit_loket ?></td>
+                    
+                    <td><strong><?= $dc->unit_loket ?></strong></td>
                     <td><?= $dc->hasil_cek_loket ?> Aman</td>
                     <td><?= $dc->ket_loket ?></td>
-
-                    <td><?= $dc->unit_igd ?></td>
+                    
+                    <td><strong><?= $dc->unit_igd ?></strong></td>
                     <td><?= $dc->hasil_cek_igd ?> Aman</td>
                     <td><?= $dc->ket_igd ?></td>
-
-                    <td><?= $dc->unit_farmasi ?></td>
+                    
+                    <td><strong><?= $dc->unit_farmasi ?></strong></td>
                     <td><?= $dc->hasil_cek_farmasi ?> Aman</td>
                     <td><?= $dc->ket_farmasi ?></td>
-
-                    <td><?= $dc->unit_operasi ?></td>
+                    
+                    <td><strong><?= $dc->unit_operasi ?></strong></td>
                     <td><?= $dc->hasil_cek_operasi ?> Aman</td>
                     <td><?= $dc->ket_operasi ?></td>
                 </tr>
